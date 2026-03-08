@@ -112,10 +112,10 @@ class $modify(AIPlayLayer, PlayLayer) {
         //  CONTROL DEL BOTÓN
         // --------------------------------------------------------
         if (shouldPress && !g_buttonHeld) {
-            this->pushButton(0, true);
+            this->pushButton(PlayerButton::Jump, true);
             g_buttonHeld = true;
         } else if (!shouldPress && g_buttonHeld) {
-            this->releaseButton(0, true);
+            this->releaseButton(PlayerButton::Jump, true);
             g_buttonHeld = false;
         }
     }
@@ -125,7 +125,7 @@ class $modify(AIPlayLayer, PlayLayer) {
         AIPlayLayer::resetLevel();
         g_buttonHeld = false;
         if (m_player1) {
-            this->releaseButton(0, true);
+            this->releaseButton(PlayerButton::Jump, true);
         }
     }
 
@@ -198,7 +198,7 @@ class $modify(AIPauseLayer, PauseLayer) {
         if (!g_aiEnabled && g_buttonHeld) {
             auto* pl = PlayLayer::get();
             if (pl) {
-                pl->releaseButton(0, true);
+                pl->releaseButton(PlayerButton::Jump, true);
             }
             g_buttonHeld = false;
         }
